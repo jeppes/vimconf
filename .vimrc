@@ -24,6 +24,9 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'HerringtonDarkHolme/yats.vim'
+Plugin 'clausreinke/typescript-tools.vim'
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line 
 call vundle#end() " required
@@ -50,3 +53,12 @@ syntax on
 set number
 set relativenumber
 set foldmethod=indent
+set modifiable
+
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
+:imap jj <Esc>
+
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
