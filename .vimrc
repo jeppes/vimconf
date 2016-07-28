@@ -18,6 +18,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'fatih/vim-go'
+Plugin 'udalov/kotlin-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Raimondi/delimitMate'
@@ -54,6 +56,7 @@ set number
 set relativenumber
 set foldmethod=indent
 set modifiable
+set expandtab
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
 :imap jj <Esc>
@@ -68,3 +71,8 @@ let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+filetype plugin on
+filetype plugin indent on
+
+
