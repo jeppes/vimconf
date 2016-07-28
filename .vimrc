@@ -57,7 +57,6 @@ set modifiable
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
 :imap jj <Esc>
-:imap <shift><shift> <C-P>
 
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
