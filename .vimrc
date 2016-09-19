@@ -14,7 +14,6 @@ Plugin 'VundleVim/Vundle.vim'
 " commands between vundle#begin/end.
 " " plugin on GitHub repo
 
-" Plugin 'tpope/vim­surround' 
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
@@ -23,12 +22,15 @@ Plugin 'udalov/kotlin-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'HerringtonDarkHolme/yats.vim'
 Plugin 'clausreinke/typescript-tools.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'elmcast/elm-vim'
+Plugin 'neovimhaskell/haskell-vim'
 
 " All of your Plugins must be added before the following line 
 call vundle#end() " required
@@ -56,6 +58,7 @@ set number
 set relativenumber
 set foldmethod=indent
 set modifiable
+" set autoindent
 set expandtab
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
@@ -75,4 +78,5 @@ autocmd FileType html,css EmmetInstall
 filetype plugin on
 filetype plugin indent on
 
-
+" Elm
+let g:elm_format_autosave = 1
