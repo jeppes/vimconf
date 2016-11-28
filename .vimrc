@@ -4,11 +4,8 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'clausreinke/typescript-tools.vim'
 Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'HerringtonDarkHolme/yats.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
@@ -50,6 +47,7 @@ if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
+let g:ycm_extra_conf_globlist = 1
 
 " Emmet settings
 let g:user_emmet_expandabbr_key='<Tab>'
@@ -59,3 +57,10 @@ autocmd FileType html,css EmmetInstall
 
 " Elm
 let g:elm_format_autosave = 1
+
+" Highlighting unwanted spaces/tabs
+highlight TabHighlight ctermbg=blue
+match TabHighlight /\t/
+
+" Timeout
+set timeoutlen=250
