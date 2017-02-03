@@ -7,6 +7,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'mattn/emmet-vim'
+Plug 'mxw/vim-jsx'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
@@ -15,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fireplace'
 Plug 'udalov/kotlin-vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 
@@ -24,8 +26,8 @@ filetype plugin on
 filetype plugin indent on 
 
 " General
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set number
 set relativenumber
 set foldmethod=indent
@@ -38,7 +40,6 @@ syntax on
 " Use 'jj' as 'esc'
 :imap jj <Esc>
 
-
 " CTRL-P ignore in searh path
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules,*/build,*/dist
 
@@ -48,6 +49,7 @@ if !exists("g:ycm_semantic_triggers")
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:ycm_extra_conf_globlist = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " Emmet settings
 let g:user_emmet_expandabbr_key='<Tab>'
@@ -64,3 +66,11 @@ match TabHighlight /\t/
 
 " Timeout
 set timeoutlen=250
+
+" Syntastic
+let g:syntastic_cpp_compiler = "g++"
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
+
