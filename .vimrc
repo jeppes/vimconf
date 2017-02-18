@@ -3,11 +3,10 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mattn/emmet-vim'
-Plug 'mxw/vim-jsx'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
@@ -23,7 +22,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
 call plug#end()
 
 filetype plugin on
-filetype plugin indent on 
+filetype plugin indent on
 
 " General
 set tabstop=2
@@ -39,9 +38,6 @@ syntax on
 
 " Use 'jj' as 'esc'
 :imap jj <Esc>
-
-" CTRL-P ignore in searh path
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules,*/build,*/dist
 
 " YouCompleteMe
 if !exists("g:ycm_semantic_triggers")
@@ -62,15 +58,28 @@ let g:elm_format_autosave = 1
 
 " Highlighting unwanted spaces/tabs
 highlight TabHighlight ctermbg=blue
+highlight ExtraWhitespace ctermbg=lightblue
 match TabHighlight /\t/
+match ExtraWhitespace /\s\+$/
 
 " Timeout
 set timeoutlen=250
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+let g:syntastic_javascript_checkers = ['eslint']
+
+" FZF search with ctrl p
+map <c-p> :FZF<CR>
 
 " Allow JSX in normal JS files
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
