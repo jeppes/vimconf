@@ -33,6 +33,9 @@ set expandtab
 syntax enable
 syntax on
 
+" Disable ex mode
+nnoremap Q <nop>
+
 " Use 'jj' as 'esc'
 :imap jj <Esc>
 
