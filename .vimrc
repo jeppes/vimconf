@@ -3,9 +3,9 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'Raimondi/delimitMate'
@@ -14,9 +14,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-fireplace'
-Plug 'udalov/kotlin-vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 
 call plug#end()
@@ -43,7 +40,6 @@ syntax on
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:ycm_extra_conf_globlist = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
@@ -52,9 +48,6 @@ let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-
-" Elm
-let g:elm_format_autosave = 1
 
 " Highlighting unwanted spaces/tabs
 highlight TabHighlight ctermbg=blue
@@ -71,7 +64,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
@@ -80,6 +73,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 " FZF search with ctrl p
 map <c-p> :FZF<CR>
 
-" Allow JSX in normal JS files
-" let g:jsx_ext_required = 0
+" Goyo with ctrl o
+map <c-o> :Goyo<CR>
 
