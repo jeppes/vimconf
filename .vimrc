@@ -8,6 +8,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim'
+Plug 'mxw/vim-jsx'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
@@ -38,6 +39,9 @@ nnoremap Q <nop>
 
 " Use 'jj' as 'esc'
 :imap jj <Esc>
+
+" Theme
+colorscheme atom
 
 " YouCompleteMe
 if !exists("g:ycm_semantic_triggers")
