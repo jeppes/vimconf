@@ -4,9 +4,10 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'neovimhaskell/haskell-vim'
@@ -82,4 +83,10 @@ map <c-p> :FZF<CR>
 
 " Goyo with ctrl o
 map <c-o> :Goyo<CR>
+
+" Limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = '240'
+map <c-l> :Limelight!!<CR>
+autocmd VimEnter * Limelight
 
