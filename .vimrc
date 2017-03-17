@@ -82,11 +82,10 @@ let g:syntastic_javascript_checkers = ['eslint']
 map <c-p> :FZF<CR>
 
 " Goyo with ctrl o
-map <c-o> :Goyo<CR>
+map <c-o> :Goyo<CR>:Limelight!!<CR>
 
 " Limelight
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = '240'
 map <c-l> :Limelight!!<CR>
-autocmd VimEnter * Limelight
 
