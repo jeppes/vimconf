@@ -91,3 +91,7 @@ map <c-o> :Goyo<CR>:Limelight!!<CR>
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = '240'
 map <c-l> :Limelight!!<CR>
+
+" Draw a line in column 80 as a reminder to keep lines short when possible
+:set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightblue
