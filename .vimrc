@@ -37,14 +37,27 @@ set expandtab
 syntax enable
 syntax on
 
+" Timeout (reduce wait times for general events)
+set timeoutlen=250
+
 " Disable ex mode
 nnoremap Q <nop>
 
 " Use 'jj' as alternative to 'esc'
 :imap jj <Esc>
 
+" Draw a line in column 80 as a reminder to keep lines short when possible
+:set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightblue
+
 " placeholder character color
-:highlight NonText ctermfg=0
+highlight NonText ctermfg=0
+
+" Highlighting unwanted spaces/tabs
+highlight TabHighlight ctermbg=blue
+highlight ExtraWhitespace ctermbg=lightblue
+match TabHighlight /\t/
+match ExtraWhitespace /\s\+$/
 
 " YouCompleteMe
 if !exists("g:ycm_semantic_triggers")
@@ -60,15 +73,6 @@ let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-
-" Highlighting unwanted spaces/tabs
-highlight TabHighlight ctermbg=blue
-highlight ExtraWhitespace ctermbg=lightblue
-match TabHighlight /\t/
-match ExtraWhitespace /\s\+$/
-
-" Timeout (reduce wait times for general events)
-set timeoutlen=250
 
 " ALE Settings
 let g:ale_fixers = {
@@ -91,7 +95,3 @@ map <c-o> :Goyo<CR>:Limelight!!<CR>
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = '240'
 map <c-l> :Limelight!!<CR>
-
-" Draw a line in column 80 as a reminder to keep lines short when possible
-:set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightblue
