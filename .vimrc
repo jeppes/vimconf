@@ -3,22 +3,29 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'jiangmiao/auto-pairs' " Auto-closing for parens, quotes, etc
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Searching for file names
-Plug 'junegunn/goyo.vim' " Distraction free mode
-Plug 'junegunn/limelight.vim' " Lighting in distraction free mode
-Plug 'scrooloose/nerdtree' " File browser
-Plug 'tpope/vim-commentary' " Commenting-out code
-Plug 'tpope/vim-sensible' " A bunch of pleasant fixes for general quirks
-Plug 'tpope/vim-surround' " Quickly chaning surrounding characters
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' } " Code completion in many languages, see git for install instructions
-Plug 'w0rp/ale' " Code compilation and linting
-Plug 'mattn/emmet-vim' " Significantly faster way of writing HTML
+" Auto-closing for parens, quotes, etc
+Plug 'jiangmiao/auto-pairs'
+" Searching for file names
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Folder browser
+Plug 'scrooloose/nerdtree'
+" Wrap current line in a comment (command: gcc)
+Plug 'tpope/vim-commentary'
+" A bunch of pleasant fixes for general quirks
+Plug 'tpope/vim-sensible'
+" Easily surround code with, e.g., parens
+Plug 'tpope/vim-surround'
+" Code compilation and linting
+Plug 'w0rp/ale'
 
 " Language specific plugins
-Plug 'neovimhaskell/haskell-vim'
+
+" Typescript
 Plug 'leafgarland/typescript-vim'
+" React
 Plug 'mxw/vim-jsx'
+" HTML auto-closing
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -28,12 +35,8 @@ filetype plugin indent on
 " General
 set tabstop=2
 set shiftwidth=2
-set number
-set relativenumber
-set foldmethod=indent
 set modifiable
 set expandtab
-
 syntax enable
 syntax on
 
@@ -43,13 +46,6 @@ set timeoutlen=250
 " Disable ex mode
 nnoremap Q <nop>
 
-" Use 'jj' as alternative to 'esc'
-:imap jj <Esc>
-
-" Draw a line in column 80 as a reminder to keep lines short when possible
-:set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightblue
-
 " placeholder character color
 highlight NonText ctermfg=0
 
@@ -58,15 +54,6 @@ highlight TabHighlight ctermbg=blue
 highlight ExtraWhitespace ctermbg=lightblue
 match TabHighlight /\t/
 match ExtraWhitespace /\s\+$/
-
-" YouCompleteMe
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_extra_conf_globlist = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " Emmet settings (for easier HTML)
 let g:user_emmet_expandabbr_key='<Tab>'
@@ -78,20 +65,13 @@ autocmd FileType html,css EmmetInstall
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['tslint'],
-\   'haskell': ['ghc'],
-\   'c++': ['g++'],
-\   'java': ['checkstyle', 'javac'],
 \   'kotlin': ['kotlinc'],
 \} " don't forget `npm i -g typescript`
 
 " FZF search with ctrl p
 map <c-p> :FZF<CR>
 
-" Goyo with ctrl o (distraction free mode)
-" Also toggles limelight
-map <c-o> :Goyo<CR>:Limelight!!<CR>
+" Draw a line in column 80 as a reminder to keep lines short when possible
+:set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightblue
 
-" Limelight
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = '240'
-map <c-l> :Limelight!!<CR>
